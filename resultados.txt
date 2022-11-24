@@ -1,15 +1,41 @@
 ################# Fase de Grupos #################
 
 
----- GRUPO  'A'
- 
- 'CAT' X  'HOL': 
-Placar:  0 x  6
-Faltas cometidas:  9 x  2
 
----- GRUPO  'G'
- 
+ GRUPO  'F'
+ ------------------
+ 'POR' X  'URU': 
+Placar:  2 x  0
+Faltas cometidas:  5 x  6
+
+
+
+ GRUPO  'G'
+ ------------------
  'BRA' X  'SER': 
 Placar:  2 x  0
-Faltas cometidas:  4 x  8
+Faltas cometidas:  5 x  9
 
+
+ ################# Oitavas de final #################
+
+
+ 'BRA' X  'POR': 
+Placar:  2 x  1
+Faltas cometidas:  5 x  6
+
+
+ ################# Quartas de final #################
+
+
+
+ ################# Semifinais #################
+
+
+
+ ################# FINAL #################
+
+
+ 'URU' X  'SER': 
+Placar:  5 x  6
+Faltas cometidas:  7 x  8

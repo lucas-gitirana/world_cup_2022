@@ -23,6 +23,13 @@ def verificar_equipe(sigla):
     else:
         return True
 
+def verificar_jogo_grupo(sigla1, sigla2):
+    if (consultar_grupo(sigla1)) in (consultar_grupo(sigla2)):
+        return False
+    else:
+        return True
+
+
 def verificar_jogo(fase, time1, time2):
     with open("partidas.csv", "r") as arquivo:
         linhas = arquivo.readlines()
@@ -30,7 +37,7 @@ def verificar_jogo(fase, time1, time2):
         aparicoes = 0
         for linha in linhas:
             vetor = linha.split(',')
-            if (str(fase) in vetor[0]) and (time1 in vetor[3] or time1 in vetor[4]) and (time2 in vetor[3] or time2 in vetor[4]):
+            if (str(fase) in vetor[0]) and ((time1 in vetor[3] or time1 in vetor[4]) and (time2 in vetor[3] or time2 in vetor[4])):
                 aparicoes += 1
 
         if aparicoes == 0:
@@ -52,7 +59,6 @@ def listar_jogos():
 def consultar_grupo(sigla):
     with open("selecoes.csv", "r") as arquivo:
         linhas = arquivo.readlines()
-        vetores = []
 
         for linha in linhas:
             vetor = linha.split(',')
@@ -85,20 +91,56 @@ def listar_equipes():
 
 def relatorio_resultados():
     with open("resultados.txt", "w") as arquivo:
-        arquivo.write('################# Fase de Grupos #################\n\n\n')
+        arquivo.write('################# Fase de Grupos #################\n\n')
         for grupo in listar_grupos():
-            arquivo.write(f'---- GRUPO {grupo} \n')
+            arquivo.write(f'\n\n GRUPO {grupo} ------------------\n')
             for jogo in listar_jogos():
                 if '1' in str(jogo[0]):                                    
                     if str(consultar_grupo(jogo[3])) in grupo:
                         arquivo.write(f'{jogo[3]} X {jogo[4]}: \n')
                         arquivo.write(f'Placar: {jogo[5]} x {jogo[6]}\n')
                         arquivo.write(f'Faltas cometidas: {jogo[7]} x {jogo[8]}\n')
+        
+        arquivo.write('\n ################# Oitavas de final #################\n\n\n')
+        for jogo in listar_jogos():
+            if '2' in str(jogo[0]) and '1' in str(jogo[1]):
+                arquivo.write(f'{jogo[3]} X {jogo[4]}: \n')
+                arquivo.write(f'Placar: {jogo[5]} x {jogo[6]}\n')
+                arquivo.write(f'Faltas cometidas: {jogo[7]} x {jogo[8]}\n')
+        
+        arquivo.write('\n ################# Quartas de final #################\n\n\n')
+        for jogo in listar_jogos():
+            if '2' in str(jogo[0]) and '2' in str(jogo[1]):
+                arquivo.write(f'{jogo[3]} X {jogo[4]}: \n')
+                arquivo.write(f'Placar: {jogo[5]} x {jogo[6]}\n')
+                arquivo.write(f'Faltas cometidas: {jogo[7]} x {jogo[8]}\n')
+        
+        arquivo.write('\n ################# Semifinais #################\n\n\n')
+        for jogo in listar_jogos():
+            if '2' in str(jogo[0]) and '3' in str(jogo[1]):
+                arquivo.write(f'{jogo[3]} X {jogo[4]}: \n')
+                arquivo.write(f'Placar: {jogo[5]} x {jogo[6]}\n')
+                arquivo.write(f'Faltas cometidas: {jogo[7]} x {jogo[8]}\n')
+        
+        arquivo.write('\n ################# FINAL #################\n\n\n')
+        for jogo in listar_jogos():
+            if '2' in str(jogo[0]) and '4' in str(jogo[1]):
+                arquivo.write(f'{jogo[3]} X {jogo[4]}: \n')
+                arquivo.write(f'Placar: {jogo[5]} x {jogo[6]}\n')
+                arquivo.write(f'Faltas cometidas: {jogo[7]} x {jogo[8]}\n')
+
+def total_jogos():
+    with open("partidas.csv", "r") as arquivo:
+        return len(arquivo.readlines()) - 1
+
+def total_equipes():
+    with open("selecoes.csv", "r") as arquivo:
+        return len(arquivo.readlines()) - 1
 
 # Menu do programa
 while resposta != 1 :
     print('---------------- MENU ----------------')
-    print('1. Sair do programa\n 2. Cadastrar equipe\n 3. Cadastrar jogo\n 4. Exibir resultados jogos\n 5. Exibir total de equipes\n 6. Listar jogos da Copa\n')
+    print('1. Sair do programa\n 2. Cadastrar equipe\n 3. Cadastrar jogo\n 4. Número total de jogos\n 5. Exibir total de equipes\n 6. Listar jogos da Copa\n')
     print('--------------------------------------')
     resposta = int(input('Digite o número da operação: '))
 
@@ -181,29 +223,31 @@ while resposta != 1 :
                     if not verificar_equipe(abreviacao2):
                         print(f'A equipe {abreviacao2} não está na Copa')
                         break
-                    else:
-                        if not(verificar_jogo(fase, abreviacao1, abreviacao2)):
+                    elif fase == 1 and verificar_jogo_grupo(abreviacao1, abreviacao2):
+                        print('As equipes não estão no mesmo grupo')
+                        
+                    elif not(verificar_jogo(fase, abreviacao1, abreviacao2)):
                 
-                            print(f'######### {abreviacao1.upper()} X {abreviacao2.upper()} #########')                
-                            gols_eq1 = int(input(f'Gols do(a) {abreviacao1}: '))
-                            gols_eq2 = int(input(f'Gols do(a) {abreviacao2}: '))
-                            faltas_eq1 = int(input(f'Faltas cometidas por {abreviacao1}: '))
-                            faltas_eq2 = int(input(f'Faltas cometidas por {abreviacao2}: '))
+                        print(f'######### {abreviacao1.upper()} X {abreviacao2.upper()} #########')                
+                        gols_eq1 = int(input(f'Gols do(a) {abreviacao1}: '))
+                        gols_eq2 = int(input(f'Gols do(a) {abreviacao2}: '))
+                        faltas_eq1 = int(input(f'Faltas cometidas por {abreviacao1}: '))
+                        faltas_eq2 = int(input(f'Faltas cometidas por {abreviacao2}: '))
 
-                            jogo.append(fase)
-                            jogo.append(etapa)
-                            jogo.append(rodada)
-                            jogo.append(abreviacao1)
-                            jogo.append(abreviacao2)
-                            jogo.append(gols_eq1)
-                            jogo.append(gols_eq2)
-                            jogo.append(faltas_eq1)
-                            jogo.append(faltas_eq2)
-                            jogos.append(jogo)
-                            jogos.append
-                            print(jogos)
-                        else:
-                            print(f'A partida entre {abreviacao1} e {abreviacao2}, pela fase {fase} já foi cadastrada.')
+                        jogo.append(fase)
+                        jogo.append(etapa)
+                        jogo.append(rodada)
+                        jogo.append(abreviacao1)
+                        jogo.append(abreviacao2)
+                        jogo.append(gols_eq1)
+                        jogo.append(gols_eq2)
+                        jogo.append(faltas_eq1)
+                        jogo.append(faltas_eq2)
+                        jogos.append(jogo)
+                        jogos.append
+                        print(jogos)
+                    else:
+                        print(f'Não é possível realizar esse jogo pela fase {fase}')
 
                 continuar = input('Deseja cadastrar novo jogo? (S - Sim; N - Não): ').upper()
                 if continuar != 'S' and continuar != 'N':
@@ -213,8 +257,17 @@ while resposta != 1 :
             for jogo in jogos:
                 gravar_partida(jogo)
 
-        ########################## Listagem dos jogos ##########################
+        ########################## Total de jogos ##########################
         case 4:
+            print(f'Número total de jogos cadastrados: {total_jogos()}')
+
+        ########################## Total de equipes ##########################
+        case 5:
+            print(f'Número total de equipes cadastradas: {total_equipes()}')
+
+        
+        ########################## Listagem dos jogos ##########################
+        case 6:
             relatorio_resultados()
                 
 
