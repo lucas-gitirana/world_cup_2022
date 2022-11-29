@@ -24,6 +24,17 @@ def verificar_equipe(sigla):
     else:
         return True
 
+def verificar_equipe_vetor(sigla, vetor):
+    aparicoes = 0
+    for item in vetor:
+        if sigla in item[1]:
+            aparicoes += 1
+    
+    if aparicoes == 0:
+        return False
+    else:
+        return True
+
 
 def verificar_jogo_grupo(sigla1, sigla2):
     if (consultar_grupo(sigla1)) in (consultar_grupo(sigla2)):
@@ -47,6 +58,18 @@ def verificar_jogo(fase, time1, time2):
             return False
         else:
             return True
+
+def verificar_jogo_vetor(fase, time1, time2, vetor):
+    aparicoes = 0
+
+    for item in vetor:            
+        if (str(fase) in str(item[0])) and ((time1 in item[3] or time1 in item[4]) and (time2 in item[3] or time2 in item[4])):
+            aparicoes += 1            
+        
+    if aparicoes == 0:
+        return False
+    else:
+        return True
 
 
 def verificar_arquivo_partidas(nome):

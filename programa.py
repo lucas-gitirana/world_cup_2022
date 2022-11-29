@@ -24,7 +24,7 @@ while resposta != 1:
                 # LEITURA
                 print('---------------- CADASTRO DE SELEÇÃO ----------------')
                 abreviacao = input('Abreviação do país: ').upper()
-                if verificar_equipe(abreviacao):
+                if verificar_equipe(abreviacao) or verificar_equipe_vetor(abreviacao, selecoes):
                     print(f'O país {abreviacao} já foi cadastrado!')
                 else:
                     pais = input('Nome do país:').upper()
@@ -82,8 +82,7 @@ while resposta != 1:
                 abreviacao1 = input('Abreviação da seleção 1: ').upper()
                 abreviacao2 = ''
                 if not verificar_equipe(abreviacao1):
-                    print(
-                        f'A equipe com a sigla {abreviacao1} não foi encontrada')
+                    print(f'A equipe com a sigla {abreviacao1} não foi encontrada')
                     break
                 else:
                     abreviacao2 = input('Abreviação da seleção 2: ').upper()
@@ -92,8 +91,7 @@ while resposta != 1:
                         break
                     elif fase == 1 and verificar_jogo_grupo(abreviacao1, abreviacao2):
                         print('As equipes não estão no mesmo grupo')
-
-                    elif not (verificar_jogo(fase, abreviacao1, abreviacao2)):
+                    elif not verificar_jogo(fase, abreviacao1, abreviacao2) and not verificar_jogo_vetor(fase, abreviacao1, abreviacao2, jogos):
 
                         print(
                             f'######### {abreviacao1.upper()} X {abreviacao2.upper()} #########')
@@ -118,7 +116,7 @@ while resposta != 1:
                         print(jogos)
                     else:
                         print(
-                            f'Não é possível realizar esse jogo pela fase {fase}')
+                            f'Não é possível realizar esse jogo duas vezes pela fase 2')
 
                 continuar = input(
                     'Deseja cadastrar novo jogo? (S - Sim; N - Não): ').upper()
