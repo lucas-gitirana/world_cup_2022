@@ -2,11 +2,19 @@
 
 
 
- GRUPO  'F'
+ GRUPO  'A'
  ------------------
- 'POR' X  'URU': 
-Placar:  2 x  0
-Faltas cometidas:  5 x  6
+ 'CAT' X  'EQU': 
+Placar:  0 x  2
+Faltas cometidas:  9 x  8
+
+
+
+ GRUPO  'B'
+ ------------------
+ 'DIN' X  'FRA': 
+Placar:  1 x  2
+Faltas cometidas:  4 x  5
 
 
 
@@ -14,15 +22,23 @@ Faltas cometidas:  5 x  6
  ------------------
  'BRA' X  'SER': 
 Placar:  2 x  0
-Faltas cometidas:  5 x  9
+Faltas cometidas:  7 x  7
+
+
+
+ GRUPO  'H'
+ ------------------
+ 'URU' X  'COR': 
+Placar:  0 x  0
+Faltas cometidas:  6 x  7
 
 
  ################# Oitavas de final #################
 
 
- 'BRA' X  'POR': 
-Placar:  2 x  1
-Faltas cometidas:  5 x  6
+ 'COR' X  'BRA': 
+Placar:  2 x  8
+Faltas cometidas:  4 x  5
 
 
  ################# Quartas de final #################
@@ -36,6 +52,7 @@ Faltas cometidas:  5 x  6
  ################# FINAL #################
 
 
- 'URU' X  'SER': 
+ 'COR' X  'BRA': 
 Placar:  5 x  6
 Faltas cometidas:  7 x  8
+
