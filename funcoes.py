@@ -126,8 +126,7 @@ def listar_grupos():
             vetor = linhas[i].split(',')
             vetores.append(vetor[2])
 
-        conjunto = set(vetores)
-        print(conjunto)
+        conjunto = set(vetores)        
         return sorted(list(conjunto))
 
 
@@ -187,6 +186,9 @@ def relatorio_resultados():
                 arquivo.write(f'{jogo[3]} X {jogo[4]}: \n')
                 arquivo.write(f'Placar: {jogo[5]} x {jogo[6]}\n')
                 arquivo.write(f'Faltas cometidas: {jogo[7]} x {jogo[8]}\n')
+        
+        arquivo.write(f'\n###################################################\n')  
+        arquivo.write(f'TOTAL DE JOGOS: {total_jogos()}')   
 
 
 def total_jogos():
@@ -199,3 +201,49 @@ def total_equipes():
     verificar_arquivo_selecoes("selecoes.csv")
     with open("selecoes.csv", "r") as arquivo:
         return len(arquivo.readlines()) - 1
+
+def listar_jogos_terminal():    
+        print('\n################# Fase de Grupos #################\n\n')
+        for grupo in listar_grupos():
+            print(f'\n\n GRUPO {grupo} ------------------\n')
+            for jogo in listar_jogos():
+                if '1' in str(jogo[0]):
+                    if str(consultar_grupo(jogo[3])) in grupo:
+                        print(f'{jogo[3]} X {jogo[4]}: \n')
+                        print(f'Placar: {jogo[5]} x {jogo[6]}\n')
+                        print(
+                            f'Faltas cometidas: {jogo[7]} x {jogo[8]}\n')
+
+        print(
+            '\n ################# Oitavas de final #################\n\n\n')
+        for jogo in listar_jogos():
+            if '2' in str(jogo[0]) and '1' in str(jogo[1]):
+                print(f'{jogo[3]} X {jogo[4]}: \n')
+                print(f'Placar: {jogo[5]} x {jogo[6]}\n')
+                print(f'Faltas cometidas: {jogo[7]} x {jogo[8]}\n')
+
+        print(
+            '\n ################# Quartas de final #################\n\n\n')
+        for jogo in listar_jogos():
+            if '2' in str(jogo[0]) and '2' in str(jogo[1]):
+                print(f'{jogo[3]} X {jogo[4]}: \n')
+                print(f'Placar: {jogo[5]} x {jogo[6]}\n')
+                print(f'Faltas cometidas: {jogo[7]} x {jogo[8]}\n')
+
+        print(
+            '\n ################# Semifinais #################\n\n\n')
+        for jogo in listar_jogos():
+            if '2' in str(jogo[0]) and '3' in str(jogo[1]):
+                print(f'{jogo[3]} X {jogo[4]}: \n')
+                print(f'Placar: {jogo[5]} x {jogo[6]}\n')
+                print(f'Faltas cometidas: {jogo[7]} x {jogo[8]}\n')
+
+        print('\n ################# FINAL #################\n\n\n')
+        for jogo in listar_jogos():
+            if '2' in str(jogo[0]) and '4' in str(jogo[1]):
+                print(f'{jogo[3]} X {jogo[4]}: \n')
+                print(f'Placar: {jogo[5]} x {jogo[6]}\n')
+                print(f'Faltas cometidas: {jogo[7]} x {jogo[8]}\n')
+
+        print(f'\n###################################################\n')  
+        print(f'TOTAL DE JOGOS: {total_jogos()}\n\n')     
