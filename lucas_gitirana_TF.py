@@ -129,10 +129,12 @@ while resposta != 1:
         ########################## Total de jogos ##########################
         case 4:
             print(f'Número total de jogos cadastrados: {total_jogos()}')
+            input("Pressione ENTER para continuar: ")
 
         ########################## Total de equipes ##########################
         case 5:
             print(f'Número total de equipes cadastradas: {total_equipes()}')
+            input("Pressione ENTER para continuar: ")
 
         ########################## Gravação das EQUIPES no banco ##########################
         case 6:
