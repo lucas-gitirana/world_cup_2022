@@ -189,6 +189,8 @@ def relatorio_resultados():
         
         arquivo.write(f'\n###################################################\n')  
         arquivo.write(f'TOTAL DE JOGOS: {total_jogos()}')   
+    
+    print('Relatório gerado!')
 
 
 def total_jogos():

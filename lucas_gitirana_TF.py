@@ -40,10 +40,12 @@ while resposta != 1:
                     selecoes.append(selecao)
                     print(selecoes)
 
-                continuar = input(
-                    'Deseja cadastrar nova seleção? (S - Sim; N - Não): ').upper()
-                if continuar != 'S' and continuar != 'N':
-                    print('RESPOSTA INVÁLIDA! Digite somente S ou N')
+                continuar = ''
+                while continuar != 'S' and continuar != 'N':
+                    continuar = input(
+                        'Deseja cadastrar nova seleção? (S - Sim; N - Não): ').upper()
+                    if continuar != 'S' and continuar != 'N':
+                        print('RESPOSTA INVÁLIDA! Digite somente S ou N')
 
             
 
@@ -121,10 +123,12 @@ while resposta != 1:
                         print(
                             f'Não é possível realizar esse jogo duas vezes pela fase 2')
 
-                continuar = input(
-                    'Deseja cadastrar novo jogo? (S - Sim; N - Não): ').upper()
-                if continuar != 'S' and continuar != 'N':
-                    print('RESPOSTA INVÁLIDA! Digite somente S ou N')
+                continuar = ''
+                while continuar != 'S' and continuar != 'N':
+                    continuar = input(
+                        'Deseja cadastrar novo jogo? (S - Sim; N - Não): ').upper()
+                    if continuar != 'S' and continuar != 'N':
+                        print('RESPOSTA INVÁLIDA! Digite somente S ou N')
 
         ########################## Total de jogos ##########################
         case 4:
@@ -153,7 +157,9 @@ while resposta != 1:
         ########################## Listar os JOGOS no banco ##########################
         case 8:
             listar_jogos_terminal()
+            input("Pressione ENTER para continuar: ")
         
         ########################## Relatório dos jogos ##########################
         case 9:
             relatorio_resultados()
+            input("Pressione ENTER para continuar: ")
