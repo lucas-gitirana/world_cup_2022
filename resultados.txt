@@ -6,7 +6,11 @@
  ------------------
  'CAT' X  'HOL': 
 Placar:  0 x  2
-Faltas cometidas:  7 x  7
+Faltas cometidas:  8 x  8
+
+ 'SEN' X  'EQU': 
+Placar:  3 x  2
+Faltas cometidas:  5 x  6
 
 
 
@@ -28,14 +32,14 @@ Faltas cometidas:  7 x  7
  ################# Semifinais #################
 
 
+ 'SEN' X  'EQU': 
+Placar:  5 x  0
+Faltas cometidas:  8 x  9
+
 
  ################# FINAL #################
 
 
- 'BRA' X  'HOL': 
-Placar:  5 x  0
-Faltas cometidas:  9 x  9
-
 
 ###################################################
-TOTAL DE JOGOS: 3
+TOTAL DE JOGOS: 4

@@ -121,7 +121,7 @@ while resposta != 1:
                         print(jogos)
                     else:
                         print(
-                            f'Não é possível realizar esse jogo duas vezes pela fase 2')
+                            f'Não é possível realizar esse jogo')
 
                 continuar = ''
                 while continuar != 'S' and continuar != 'N':
